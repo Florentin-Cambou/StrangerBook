@@ -59,42 +59,37 @@ fun ListTile(post: Post){
         Image(
             painter = painterResource(id = post.postImage),
             contentDescription = "post image",
-            contentScale = ContentScale.Crop,
+            contentScale = ContentScale.FillWidth,
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(percent = 10))
         )
 
         Row(
-            modifier = Modifier.padding(start = 5.dp)
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Icon(
-                imageVector = Icons.Default.Favorite,
+                imageVector = if(post.didLike) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                 contentDescription = null,
-                modifier = Modifier.padding(5.dp)
             )
             Icon(
                 imageVector = Icons.Default.Email,
                 contentDescription = null,
-                modifier = Modifier.padding(5.dp)
             )
             Icon(
                 imageVector = Icons.Default.Send,
                 contentDescription = null,
-                modifier = Modifier.padding(5.dp)
             )
             
             Spacer(modifier = Modifier.weight(1.0F))
             Icon(
                 imageVector = Icons.Default.Info,
                 contentDescription = null,
-                modifier = Modifier.padding(start = 5.dp)
             )
         }
         Text(text = "${post.likes} J'aime")
         Text(
             text = stringResource(id = post.description),
-            modifier = Modifier.padding(start = 10.dp)
         )
         Divider(modifier = Modifier.padding(5.dp))
     }
