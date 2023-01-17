@@ -17,6 +17,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.wiapp.strangerbook.model.Post
 
@@ -39,7 +40,12 @@ fun ListTile(post: Post){
                     .width(80.dp)
                     .clip(RoundedCornerShape(percent = 50))
             )
-            Text(text = post.user.pseudo )
+            Text(
+                text = post.user.pseudo,
+                modifier = Modifier
+                    .padding(start = 5.dp),
+                fontWeight = FontWeight.Bold
+            )
             Spacer(modifier = Modifier.weight(1.0F) )
             Icon(imageVector = Icons.Default.Menu, contentDescription = null)
 
